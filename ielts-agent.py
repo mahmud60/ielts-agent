@@ -3,20 +3,59 @@ from anthropic.types import ToolUseBlock
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import re
+from pydub import AudioSegment
+import io
 
 load_dotenv()
 
 client = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+male_voices   = ["fable", "onyx", "echo"]
+female_voices = ["nova", "shimmer", "alloy"]
+male_index    = 0
+female_index  = 0
+voice_map = {}
+
+def parse_script(script: str):
+    lines = script.split("\n")
+    parsed = []
+    for line in lines:
+        match = re.match(r'\*\*(.+?):\*\*', line)
+        if match:
+            speaker = match.group(1)
+            dialogue = line.split(':**')[1].strip()
+            parsed.append((speaker, dialogue))
+    return parsed
+
+def get_voice(speaker: str):
+    global male_index, female_index
+
+    if speaker in voice_map:
+        return voice_map[speaker]
+
+    if speaker.startswith("[M]"):
+        voice = male_voices[male_index % len(male_voices)]
+        male_index += 1
+    elif speaker.startswith("[F]"):
+        voice = female_voices[female_index % len(female_voices)]
+        female_index += 1
+    else:
+        voice = "alloy"  # fallback
+
+    voice_map[speaker] = voice
+    return voice
+
+
 def script_agent(section : str, topic : str):
 
     messages = [{"role": "user", "content" : f"Section: {section}\n Topic : {topic}"}]
 
     response = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-haiku-4-5-20251001",
         max_tokens=2000,
-        system=f"You are an expert ielts question creator. Create a script for conversation for {section} and {topic}. Keep the script strictly under 3500 characters so it can be converted to speech as this is a requirement.",
+        system=f"You are an expert ielts question creator. Create a script for conversation for {section} and {topic}. Keep the script strictly under 3500 characters so it can be converted to speech as this is a requirement. Label each speaker with [M] or [F] before their name, e.g. **[F] Sarah:** or **[M] Mr. Collins:**. Always introduce the speakers and use ... when a break in conversation is needed. The conversation context should be in British.",
         messages=messages
     )
 
@@ -30,7 +69,7 @@ def question_agent(script : str):
     messages = [{"role":"user", "content": script}]
 
     response = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-haiku-4-5-20251001",
         max_tokens=2000,
         system=f"You are an expert ielts question creator. Generate 10 questions for the following question types: multiple choice, fill in the blanks, true/false/not given, short answers.",
         messages=messages
@@ -42,16 +81,35 @@ def question_agent(script : str):
     return response.content[0].text
 
 def tts_agent(script : str):
-    print(f"Script length: {len(script)}")
-    response = openai_client.audio.speech.create(
-        model="tts-1",
-        voice="fable",
-        input=script
-    )
-
-    response.stream_to_file("output.mp3")
-
-    return "Audio saved to output.mp3"
+    content = parse_script(script)
+    audio_segments = []
+    for speaker, dialogue in content:
+        voice = get_voice(speaker)
+        clean_name = speaker.replace("[M]", "").replace("[F]", "").strip()
+        print(f"{clean_name} ({voice}): {dialogue[:30]}...")
+        
+        response = openai_client.audio.speech.create(
+            model="tts-1",
+            voice=voice,
+            input=dialogue
+        )
+        
+        # Load raw bytes into pydub AudioSegment
+        audio_bytes = io.BytesIO(response.content)
+        segment = AudioSegment.from_file(audio_bytes, format="mp3")
+        
+        # Optional: add a short pause between lines
+        pause = AudioSegment.silent(duration=400)  # 400ms
+        audio_segments.append(segment + pause)
+    
+    # Combine all segments
+    combined = sum(audio_segments, AudioSegment.empty())
+    
+    output_path = "modified.mp3"
+    combined.export(output_path, format="mp3")
+    
+    print(f"✅ Audio saved to {output_path} | Voices used: {voice_map}")
+    return output_path
 
 orchestrator_tools = [
     {
@@ -94,7 +152,7 @@ def orchestrator(section : str, topic : str):
     messages = [{"role": "user", "content" : f"Section: {section}\n Topic : {topic}"}]
 
     response = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-haiku-4-5-20251001",
         max_tokens=2000,
         tools=orchestrator_tools,
         system="You are an orchestrator. Follow this exact order: 1) Call script_agent to generate a script, 2) Call question_agent passing the script, 3) Call tts_agent passing the same script from step 1. Always pass the script text between agents.",
@@ -122,7 +180,7 @@ def orchestrator(section : str, topic : str):
         messages.append({"role": "user", "content": tool_results})
 
         response = client.messages.create(
-            model="claude-haiku-4-5",
+            model="claude-haiku-4-5-20251001",
             max_tokens=2000,
             tools=orchestrator_tools,
             system="You are an orchestrator. Follow this exact order: 1) Call script_agent to generate a script, 2) Call question_agent passing the script, 3) Call tts_agent passing the same script from step 1. Always pass the script text between agents.",

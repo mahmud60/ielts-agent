@@ -1,109 +1,80 @@
-# IELTS Listening Test – Section 1: Question Set
+# IELTS Questions Based on Renting an Apartment Conversation
 
-**Topic: Renting an Apartment**
+## 1. MULTIPLE CHOICE QUESTIONS
 
----
+**Question 1:** What is James's primary reason for relocating to the city?
+- A) To study at a university
+- B) For a work opportunity
+- C) To be closer to family
+- D) To experience city life
 
-## PART A: Multiple Choice
-*Choose the correct letter, A, B, or C.*
+**Answer: B**
 
-**1.** Why does Sarah need a furnished apartment?
-- A. She sold all her furniture before moving
-- B. She recently relocated to the city and has no furniture
-- C. She prefers furnished apartments for financial reasons
+**Question 2:** Which of the following is NOT mentioned as one of James's apartment requirements?
+- A) One bedroom
+- B) Close to city center
+- C) Air conditioning
+- D) Good natural light
 
-**2.** How much is the monthly rent for the apartment on Hartfield Road?
-- A. £900
-- B. £950
-- C. £850
+**Answer: C**
 
-**3.** Which bills are included in the monthly rent?
-- A. Water and electricity
-- B. Water only
-- C. Electricity and internet
+**Question 3:** What does James use for commuting to work?
+- A) His personal car
+- B) Public transport (metro)
+- C) Bicycle
+- D) Walking
 
-**4.** How long is the minimum rental contract?
-- A. Three months
-- B. Six months
-- C. Twelve months
+**Answer: B**
 
-**5.** When is the viewing appointment scheduled?
-- A. Thursday at 2:00 PM
-- B. Friday at 2:00 PM
-- C. Thursday at 3:00 PM
+**Question 4:** How long does James plan to stay in the apartment?
+- A) One year
+- B) Six months
+- C) At least two years
+- D) Three years
 
----
-
-## PART B: Fill in the Blanks
-*Complete the sentences below using **NO MORE THAN TWO WORDS AND/OR A NUMBER** from the recording.*
-
-**6.** The apartment is located on the __________ floor, and the building has a __________ for residents.
-
-**7.** The security deposit is equal to __________ weeks' rent and is held in a __________ scheme.
-
-**8.** The nearest tube station is called __________ and is only a __________ walk from the apartment.
-
-**9.** The apartment becomes available from the __________ of next month, and Sarah must submit her __________ and references beforehand.
-
-**10.** Sarah's contact phone number is __________.
+**Answer: C**
 
 ---
 
-## PART C: True / False / Not Given
-*Write **TRUE** if the statement agrees with the information, **FALSE** if it contradicts the information, or **NOT GIVEN** if there is no information about this.*
+## 2. FILL IN THE BLANKS
 
-**11.** The apartment includes two parking spaces in the underground car park.
+**Question 5:** James's monthly budget for rent is between $_______ and $_______ dollars.
 
-**12.** Internet service is available in the building but must be activated separately.
+**Answer: 1,200; 1,500**
 
-**13.** Sarah intends to use the second bedroom as a guest room.
+**Question 6:** James previously rented a _______ apartment for three years before this.
 
-**14.** The supermarket near the apartment is approximately a two-minute walk away.
+**Answer: studio**
 
-**15.** Mr. Collins has personally visited the apartment on Hartfield Road.
+**Question 7:** James prefers a place with good _______ light and a small _______.
 
----
+**Answer: natural; balcony**
 
-## PART D: Short Answer Questions
-*Answer the questions below using **NO MORE THAN THREE WORDS** from the recording.*
+**Question 8:** James mentions that his former landlord was very _______ with him as a tenant.
 
-**16.** What type of internet connection does the building have ready to use?
-
-**17.** Where is the storage unit located within the building?
-
-**18.** What is located directly outside the apartment building?
-
-**19.** How long a contract do most tenants typically sign?
-
-**20.** What does Sarah need to provide along with her application form before moving in?
+**Answer: satisfied**
 
 ---
 
-## ✅ Answer Key
+## 3. TRUE/FALSE/NOT GIVEN
 
-| Q | Answer |
-|---|--------|
-| 1 | B |
-| 2 | C |
-| 3 | B |
-| 4 | B |
-| 5 | A |
-| 6 | third / lift |
-| 7 | six / government-approved |
-| 8 | Greenfield (tube station) / five-minute |
-| 9 | first / application form |
-| 10 | 07745 312 896 |
-| 11 | FALSE – only one parking space is included |
-| 12 | TRUE |
-| 13 | NOT GIVEN – she says it will be a home office |
-| 14 | TRUE |
-| 15 | NOT GIVEN |
-| 16 | fibre connection |
-| 17 | in the basement |
-| 18 | a bus stop |
-| 19 | twelve months |
-| 20 | references |
+**Question 9:** James requires parking as an essential feature for the apartment.
+- A) True
+- B) False
+- C) Not Given
+
+**Answer: B (False)** - He states parking would be nice but is not essential.
+
+**Question 10:** Sarah offers to show James the apartments on Saturday morning.
+- A) True
+- B) False
+- C) Not Given
+
+**Answer: B (False)** - James is free in the afternoon on Saturday, and Sarah agrees to arrange that time.
 
 ---
 
-> 💡 **Examiner's Note:** Questions test a range of listening micro-skills including *listening for specific information*, *distinguishing between similar numbers*, *identifying implied meaning*, and *recognising what is NOT stated* — all core competencies assessed in the IELTS Listening module.
+**BONUS SHORT ANSWER QUESTION:**
+
+**Question 11:** According to James, what important quality did he demonstrate as a previous tenant?
+- **Answer:** He always paid rent on time and kept the place in good condition (or any variation mentioning punctual payment and property maintenance).
